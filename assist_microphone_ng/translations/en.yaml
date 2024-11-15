@@ -35,3 +35,15 @@ configuration:
     name: Debug logging
     description: >-
       Enable debug logging.
+  snd_command_rate:
+    name: Output sample rate
+    description: >-
+      Sample rate for output audio. Default: 22050 Hz
+  mic_seconds_to_mute_after_awake_wav:
+    name: Seconds to mute microphone after awake WAV
+    description: >-
+      Seconds to mute microphone after awake WAV is played. Default: 0.5
+  mic_no_mute_during_awake_wav:
+    name: Do not mute during awake WAV
+    description: >-
+      Do not mute microphone during awake WAV playback. Default: false
