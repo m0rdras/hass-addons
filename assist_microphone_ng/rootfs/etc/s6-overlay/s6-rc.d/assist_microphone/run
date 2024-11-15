@@ -12,6 +12,10 @@ if bashio::config.true 'sound_enabled'; then
     extra_args+=('--snd-command' "aplay -r $(bashio::config 'snd_command_rate') -c 1 -f S16_LE -t raw")
 fi
 
+if bashio::config.true 'mic_no_mute_during_awake_wav'; then
+    extra_args+=('--mic-no-mute-during-awake-wav')
+fi
+
 exec python3 -m wyoming_satellite \
     --name 'assist microphone ng' \
     --uri 'tcp://0.0.0.0:10700' \
@@ -24,4 +28,6 @@ exec python3 -m wyoming_satellite \
     --snd-volume-multiplier "$(bashio::config 'sound_volume_multiplier')" \
     --mic-auto-gain "$(bashio::config 'auto_gain')" \
     --mic-noise-suppression "$(bashio::config 'noise_suppression')" \
+    --mic-seconds-to-mute-after-awake-wav "$(bashio::config 'mic_seconds_to_mute_after_awake_wav')" \
     --no-zeroconf "${extra_args[@]}"
+
