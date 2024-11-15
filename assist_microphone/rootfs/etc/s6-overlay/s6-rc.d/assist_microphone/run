@@ -9,14 +9,15 @@ if bashio::config.true 'debug_logging'; then
 fi
 
 if bashio::config.true 'sound_enabled'; then
-    extra_args+=('--snd-command' 'aplay -r 44100 -c 1 -f S16_LE -t raw')
+    extra_args+=('--snd-command' "aplay -r $(bashio::config 'snd_command_rate') -c 1 -f S16_LE -t raw")
 fi
 
 exec python3 -m wyoming_satellite \
     --name 'assist microphone' \
     --uri 'tcp://0.0.0.0:10700' \
     --mic-command 'arecord -r 16000 -c 1 -f S16_LE -t raw' \
-    --snd-command-rate 16000 \
+    --mic-command-rate 16000 \
+    --snd-command-rate "$(bashio::config 'snd_command_rate')" \
     --awake-wav "$(bashio::config 'awake_wav')" \
     --done-wav "$(bashio::config 'done_wav')" \
     --mic-volume-multiplier "$(bashio::config 'mic_volume_multiplier')" \
