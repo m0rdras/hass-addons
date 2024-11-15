@@ -39,4 +39,4 @@ schema:
   mic_no_mute_during_awake_wav: bool
 audio: true
 homeassistant: 2023.12.1
-image: ghcr.io/m0rdras/hass-addons/{arch}-addon-assist_microphone_ng
+image: ghcr.io/m0rdras/{arch}-addon-assist_microphone_ng
