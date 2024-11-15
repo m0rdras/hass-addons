@@ -9,7 +9,7 @@ if bashio::config.true 'debug_logging'; then
 fi
 
 if bashio::config.true 'sound_enabled'; then
-    extra_args+=('--snd-command' 'aplay -r 16000 -c 1 -f S16_LE -t raw')
+    extra_args+=('--snd-command' 'aplay -r 44100 -c 1 -f S16_LE -t raw')
 fi
 
 exec python3 -m wyoming_satellite \
